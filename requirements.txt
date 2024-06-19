@@ -22,3 +22,6 @@ Flask-Caching
 gunicorn
 docker
 docker-compose
+pymilter
+spamsum
+requests
