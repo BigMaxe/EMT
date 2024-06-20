@@ -25,3 +25,4 @@ docker-compose
 pymilter
 spamsum
 requests
+pillow

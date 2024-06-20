@@ -1,4 +1,3 @@
-# app/models/device_optimization.py
 from app import db
 from PIL import Image
 from io import BytesIO
