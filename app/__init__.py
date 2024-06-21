@@ -17,6 +17,7 @@ def create_app(config_class=Config):
     from app.models.live_support import LiveSupportSession, Message
     from app.models.scheduling import Schedule
     from app.models.social_interactions import SocialInteraction
+    from app.models.white_label import WhiteLabelSettings
 
     from app.routes.auth import auth_bp
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
