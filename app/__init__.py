@@ -10,6 +10,9 @@ def create_app(config_class=Config):
 
     db.init_app(app)
 
+    from app.models.form import Form, FormField
+    from app.models.form_response import FormResponse
+
     from app.routes.auth import auth_bp
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
 
