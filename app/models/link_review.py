@@ -12,6 +12,9 @@ class LinkReview(db.Model):
     click_count = db.Column(db.Integer, default=0)
     created_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
+    safety_check = db.Column(db.String(50), nullable=False)
+    functionality_check = db.Column(db.String(50), nullable=False)
+    shortened_link = db.Column(db.String(500), nullable=False)
 
     def __repr__(self):
         return f'<LinkReview {self.url}>'
@@ -91,5 +94,8 @@ class LinkReview(db.Model):
             'status': self.status,
             'click_count': self.click_count,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'safety_check': self.safety_check,
+            'functionality_check': self.functionality_check,
+            'shortened_link': self.shortened_link
         }
