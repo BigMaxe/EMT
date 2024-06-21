@@ -13,6 +13,7 @@ def create_app(config_class=Config):
     from app.models.form import Form, FormField
     from app.models.form_response import FormResponse
     from app.models.integration import Integration
+    from app.models.link_review import LinkReview
 
     from app.routes.auth import auth_bp
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
