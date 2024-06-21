@@ -1,6 +1,7 @@
 from flask import Flask
 from app.config import Config
 from flask_sqlalchemy import SQLAlchemy
+from app.services.device_optimization_service import DeviceOptimizationService
 
 db = SQLAlchemy()
 
@@ -9,6 +10,10 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     db.init_app(app)
+    mail.init_app(app)
+
+    # Initialize services
+    app.device_optimization_service = DeviceOptimizationService
 
     from app.models.form import Form, FormField
     from app.models.form_response import FormResponse
