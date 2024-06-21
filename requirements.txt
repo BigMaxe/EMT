@@ -25,4 +25,7 @@ docker-compose
 pymilter
 spamsum
 requests
-pillow
+Pillow
+shortuuid
+jsonschema
+cryptography
