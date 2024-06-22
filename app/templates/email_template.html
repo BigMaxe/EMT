@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container mt-4">
     <h1>Email Template</h1>
-    <form method="POST" action="{{ url_for('email_template.save_template') }}">
+    <form method="POST" action="{{ url_for('email_template.save_template') }}"> <!-- Linked to the `save_template` view in the `email_template` blueprint -->
         <div class="form-group">
             <label for="template_name">Template Name</label>
             <input type="text" class="form-control" id="template_name" name="template_name" placeholder="Enter template name" required>
