@@ -3,8 +3,11 @@
 {% block title %}Form Builder{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1>Form Builder</h1>
+<div class="card">
+  <div class="card-header">
+    <h1>Create Form</h1>
+  </div>
+  <div class="card-body">
     <form method="POST" action="{{ url_for('form_builder.save_form') }}"> <!-- Linked to the `save_form` view in the `form_builder` blueprint -->
         <div class="form-group">
             <label for="form_name">Form Name</label>
@@ -20,6 +23,7 @@
         <button type="button" class="btn btn-secondary" id="add-field">Add Field</button>
         <button type="submit" class="btn btn-primary">Save Form</button>
     </form>
+  </div>
 </div>
 
 <script>

@@ -3,8 +3,11 @@
 {% block title %}Email Template{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1>Email Template</h1>
+<div class="card">
+  <div class="card-header">
+    <h1>Create Email Template</h1>
+  </div>
+  <div class="card-body">
     <form method="POST" action="{{ url_for('email_template.save_template') }}"> <!-- Linked to the `save_template` view in the `email_template` blueprint -->
         <div class="form-group">
             <label for="template_name">Template Name</label>
@@ -20,5 +23,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Save Template</button>
     </form>
+  </div>
 </div>
 {% endblock %}
