@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Email Marketing Tool{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- Linked to `app/static/css/styles.css` -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -13,58 +13,58 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url_for('main.index') }}">Email Marketing Tool</a> <!-- Linked to the index view in the `main` blueprint -->
+        <a class="navbar-brand" href="{{ url_for('main.index') }}">Email Marketing Tool</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a> <!-- Linked to the `login` view in the `auth` blueprint -->
+                    <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a> <!-- Linked to the `register` view in the `auth` blueprint -->
+                    <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a> <!-- Linked to the `logout` view in the `auth` blueprint -->
+                    <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('email_template.save_template') }}">Email Templates</a> <!-- Linked to the `save_template` view in the `email_template` blueprint -->
+                    <a class="nav-link" href="{{ url_for('email_template.save_template') }}">Email Templates</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('form_builder.save_form') }}">Form Builder</a> <!-- Linked to the `save_form` view in the `form_builder` blueprint -->
+                    <a class="nav-link" href="{{ url_for('form_builder.save_form') }}">Form Builder</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('ab_testing.index') }}">A/B Testing</a> <!-- Linked to the `index` view in the `ab_testing` blueprint -->
+                    <a class="nav-link" href="{{ url_for('ab_testing.index') }}">A/B Testing</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('analytics.index') }}">Analytics</a> <!-- Linked to the `index` view in the `analytics` blueprint -->
+                    <a class="nav-link" href="{{ url_for('analytics.index') }}">Analytics</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('automation.index') }}">Automation</a> <!-- Linked to the `index` view in the `automation` blueprint -->
+                    <a class="nav-link" href="{{ url_for('automation.index') }}">Automation</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('campaign.index') }}">Campaigns</a> <!-- Linked to the `index` view in the `campaign` blueprint -->
+                    <a class="nav-link" href="{{ url_for('campaign.index') }}">Campaigns</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('link_review.index') }}">Link Review</a> <!-- Linked to the `index` view in the `link_review` blueprint -->
+                    <a class="nav-link" href="{{ url_for('link_review.index') }}">Link Review</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('live_support.index') }}">Live Support</a> <!-- Linked to the `index` view in the `live_support` blueprint -->
+                    <a class="nav-link" href="{{ url_for('live_support.index') }}">Live Support</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('scheduling.index') }}">Scheduling</a> <!-- Linked to the `index` view in the `scheduling` blueprint -->
+                    <a class="nav-link" href="{{ url_for('scheduling.index') }}">Scheduling</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('social_interactions.index') }}">Social Interactions</a> <!-- Linked to the `index` view in the `social_interactions` blueprint -->
+                    <a class="nav-link" href="{{ url_for('social_interactions.index') }}">Social Interactions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('white_label.index') }}">White Label</a> <!-- Linked to the `index` view in the `white_label` blueprint -->
+                    <a class="nav-link" href="{{ url_for('white_label.index') }}">White Label</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div class="container">
+    <div class="container fade-in">
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
