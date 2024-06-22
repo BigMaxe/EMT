@@ -75,4 +75,7 @@ def create_app(config_class=Config):
     from app.routes.report import report_bp
     app.register_blueprint(report_bp, url_prefix='/api/report')
 
+    from app.routes.spam_filter import spam_filter_bp
+    app.register_blueprint(spam_filter_bp, url_prefix='/api/spam_filter')
+
     return app
