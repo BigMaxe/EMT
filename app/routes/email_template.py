@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, redirect, url_for, flash, render_template
 from app import db
 from app.models.email_template import EmailTemplate
 from app.models.user import User
@@ -50,6 +50,23 @@ def create_email_template():
     db.session.commit()
 
     return jsonify(email_template.to_dict()), 201
+
+
+@email_template_bp.route('/email_template', methods=['GET', 'POST'])
+def save_template():
+    if request.method == 'POST':
+        template_name = request.form['template_name']
+        subject = request.form['subject']
+        body = request.form['body']
+
+        new_template = EmailTemplate(name=template_name, subject=subject, body=body)
+        db.session.add(new_template)
+        db.session.commit()
+
+        flash('Template saved successfully!', 'success')
+        return redirect(url_for('email_template.save_template'))
+
+    return render_template('email_template.html')
 
 # Update an existing email template
 @email_template_bp.route('/email_template/<int:email_template_id>', methods=['PUT'])

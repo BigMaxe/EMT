@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, redirect, url_for, flash, render_template
 from app import db
 from app.models.form import Form, FormField
 from app.models.form_response import FormResponse
@@ -46,6 +46,24 @@ def create_form():
 
     db.session.commit()
     return jsonify(form.to_dict()), 201
+
+
+@form_builder_bp.route('/form_builder', methods=['GET', 'POST'])
+def save_form():
+    if request.method == 'POST':
+        form_name = request.form['form_name']
+        description = request.form['description']
+        fields = request.form.getlist('fields')
+
+        new_form = Form(name=form_name, description=description, fields=fields)
+        db.session.add(new_form)
+        db.session.commit()
+
+        flash('Form saved successfully!', 'success')
+        return redirect(url_for('form_builder.save_form'))
+
+    return render_template('form_template.html')
+
 
 # Update an existing form
 @form_builder_bp.route('/form/<int:form_id>', methods=['PUT'])
