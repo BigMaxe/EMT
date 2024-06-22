@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Email Template{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Email Template</h1>
+    <form method="POST" action="{{ url_for('email_template.save_template') }}">
+        <div class="form-group">
+            <label for="template_name">Template Name</label>
+            <input type="text" class="form-control" id="template_name" name="template_name" placeholder="Enter template name" required>
+        </div>
+        <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter email subject" required>
+        </div>
+        <div class="form-group">
+            <label for="body">Body</label>
+            <textarea class="form-control" id="body" name="body" rows="10" placeholder="Enter email body" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Template</button>
+    </form>
+</div>
+{% endblock %}

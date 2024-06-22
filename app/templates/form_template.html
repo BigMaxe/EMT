@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Form Builder{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Form Builder</h1>
+    <form method="POST" action="{{ url_for('form_builder.save_form') }}">
+        <div class="form-group">
+            <label for="form_name">Form Name</label>
+            <input type="text" class="form-control" id="form_name" name="form_name" placeholder="Enter form name" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter form description" required></textarea>
+        </div>
+        <div id="form-fields">
+            <!-- Form fields will be dynamically added here -->
+        </div>
+        <button type="button" class="btn btn-secondary" id="add-field">Add Field</button>
+        <button type="submit" class="btn btn-primary">Save Form</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('add-field').addEventListener('click', function() {
+        const formFields = document.getElementById('form-fields');
+        const fieldIndex = formFields.children.length;
+
+        const fieldDiv = document.createElement('div');
+        fieldDiv.classList.add('form-group');
+        fieldDiv.innerHTML = `
+            <label for="field_${fieldIndex}_name">Field Name</label>
+            <input type="text" class="form-control" id="field_${fieldIndex}_name" name="fields[${fieldIndex}][name]" placeholder="Enter field name" required>
+            <label for="field_${fieldIndex}_type">Field Type</label>
+            <select class="form-control" id="field_${fieldIndex}_type" name="fields[${fieldIndex}][type]" required>
+                <option value="text">Text</option>
+                <option value="email">Email</option>
+                <option value="textarea">Textarea</option>
+            </select>
+        `;
+        formFields.appendChild(fieldDiv);
+    });
+</script>
+{% endblock %}
