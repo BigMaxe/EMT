@@ -29,3 +29,9 @@ Pillow
 shortuuid
 jsonschema
 cryptography
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Mail
+Flask-Login
+pytest

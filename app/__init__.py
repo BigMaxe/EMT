@@ -2,8 +2,16 @@ from flask import Flask
 from app.config import Config
 from flask_sqlalchemy import SQLAlchemy
 from app.services.device_optimization_service import DeviceOptimizationService
+from flask_migrate import Migrate
+from flask_mail import Mail
+from flask_login import LoginManager
+from config import Config
 
 db = SQLAlchemy()
+migrate = Migrate()
+mail = Mail()
+login = LoginManager()
+login.login_view = 'auth.login'
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -12,6 +20,8 @@ def create_app(config_class=Config):
 
     db.init_app(app)
     mail.init_app(app)
+    migrate.init_app(app, db)
+    login.init_app(app)
 
     # Initialize services
     app.device_optimization_service = DeviceOptimizationService
