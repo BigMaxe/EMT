@@ -23,7 +23,7 @@ gunicorn
 docker
 docker-compose
 pymilter
-spamsum
+pyspamsum
 requests
 Pillow
 shortuuid
